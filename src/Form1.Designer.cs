@@ -1,6 +1,6 @@
 ﻿namespace ChatApp;
 
-partial class Form1
+partial class Main
 {
     /// <summary>
     ///  Required designer variable.
@@ -28,11 +28,43 @@ partial class Form1
     /// </summary>
     private void InitializeComponent()
     {
-        this.components = new System.ComponentModel.Container();
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.ClientSize = new System.Drawing.Size(800, 450);
-        this.Text = "Form1";
+        messageBox = new RichTextBox();
+        sendBtn = new Button();
+        SuspendLayout();
+        // 
+        // messageBox
+        // 
+        messageBox.Location = new Point(41, 363);
+        messageBox.Name = "messageBox";
+        messageBox.Size = new Size(640, 60);
+        messageBox.TabIndex = 0;
+        messageBox.Text = "";
+        messageBox.TextChanged += messageBox_textWritten;
+        // 
+        // button1
+        // 
+        sendBtn.Location = new Point(702, 363);
+        sendBtn.Name = "button1";
+        sendBtn.Size = new Size(75, 60);
+        sendBtn.TabIndex = 1;
+        sendBtn.Text = "button1";
+        sendBtn.UseVisualStyleBackColor = true;
+        sendBtn.Click += send_click;
+        // 
+        // Main
+        // 
+        AutoScaleDimensions = new SizeF(7F, 15F);
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(800, 450);
+        Controls.Add(sendBtn);
+        Controls.Add(messageBox);
+        Name = "Main";
+        Text = "Chat Application";
+        ResumeLayout(false);
     }
 
     #endregion
+
+    private RichTextBox messageBox;
+    private Button sendBtn;
 }
