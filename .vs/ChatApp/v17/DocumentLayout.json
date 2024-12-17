@@ -19,7 +19,7 @@
       "RelativeMoniker": "D:0:0:{AB64B716-5B95-4EEF-A8F2-8F1594198786}|ChatApp.csproj|solutionrelative:src\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AB64B716-5B95-4EEF-A8F2-8F1594198786}|ChatApp.csproj|c:\\users\\lucas\\documents\\aa important folder\\c#\\chatapp\\src\\form1.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
+      "AbsoluteMoniker": "D:0:0:{AB64B716-5B95-4EEF-A8F2-8F1594198786}|ChatApp.csproj|C:\\Users\\lucas\\Documents\\AA IMPORTANT FOLDER\\c#\\ChatApp\\src\\form1.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
       "RelativeMoniker": "D:0:0:{AB64B716-5B95-4EEF-A8F2-8F1594198786}|ChatApp.csproj|solutionrelative:src\\form1.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
     },
     {
@@ -71,8 +71,7 @@
               "RelativeToolTip": "src\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T12:00:05.016Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-22T12:00:05.016Z"
             },
             {
               "$type": "Document",
@@ -84,8 +83,7 @@
               "RelativeToolTip": ".gitignore",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-11-22T12:01:38.999Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-22T12:01:38.999Z"
             },
             {
               "$type": "Document",
