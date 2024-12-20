@@ -9,7 +9,6 @@ void format_string(const char* filename, char** dst, char** args,
                    size_t arg_count);
 char* replace_segment(char* string, char* replace, int l, int r, int stringlen,
                       int replacelen);
-
 void read_file(const char* filename, char** dst);
 
 /*
@@ -30,15 +29,14 @@ void read_file(const char* filename, char** dst);
  */
 
 static int _callback(void* data, int count, char** values, char** columns) {
-        struct database_connection* connection =
-            (struct database_connection*)(data);
+        struct callbackvalues* cvalues =
+            (struct callbackvalues*)(data);
 
-        printf("Count: %d\n", count);
+	cvalues->names = columns;
+	cvalues->values = values;
+	cvalues->count = count;
 
-        for (int i = 0; i < count; ++i) {
-                printf("Name: %s, value: %s\n", columns[i], values[i]);
-        }
-        return 0;
+	return 0;
 }
 
 void connect_database(struct database_connection* connection,
@@ -60,11 +58,13 @@ void close_database(struct database_connection* connection) {
         sqlite3_close(connection->database);
 }
 
-void execute_sql_string(struct database_connection* connection,
+struct callbackvalues execute_sql_string(struct database_connection* connection,
                         const char* string) {
-        char* errmsg;
+        struct callbackvalues values = (struct callbackvalues){0};
+
+	char* errmsg;
         connection->database_handle = sqlite3_exec(
-            connection->database, string, _callback, connection, &errmsg);
+            connection->database, string, _callback, &values, &errmsg);
 
         if (connection->database_handle != SQLITE_OK) {
                 fprintf(stderr, "Failed to execute sql string. %s!\n",
@@ -72,11 +72,13 @@ void execute_sql_string(struct database_connection* connection,
 
                 sqlite3_free(errmsg);
                 sqlite3_close(connection->database);
-                return;
+                return (struct callbackvalues){0};
         }
+
+	return values;
 }
 
-void execute_sql_file(struct database_connection* connection,
+struct callbackvalues execute_sql_file(struct database_connection* connection,
                       const char* filename, char** args, size_t arg_count) {
         char* buffer;
         va_list ap;
@@ -85,8 +87,9 @@ void execute_sql_file(struct database_connection* connection,
                   &buffer); // Assume `read_file` dynamically allocates `*dst`
         format_string(filename, &buffer, args, arg_count);
 
-        execute_sql_string(connection, buffer);
+        struct callbackvalues values = execute_sql_string(connection, buffer);
         free(buffer);
+	return values;
 }
 
 //==========================================================================================================================================================
@@ -149,7 +152,7 @@ void read_file(const char* filename, char** dst) {
         (*dst)[file_size] = '\0';
         fclose(fptr);
 }
-
+/*
 int main(void) {
         struct database_connection connection;
         connect_database(&connection, "databse.db");
@@ -164,4 +167,4 @@ int main(void) {
         execute_sql_file(&connection, "table.sql", (char*[]){"Users"}, 1);
 
         close_database(&connection);
-}
+}*/

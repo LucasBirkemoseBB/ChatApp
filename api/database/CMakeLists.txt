@@ -21,8 +21,8 @@ file(GLOB_RECURSE SOURCES
 )
 
 # Define the shared library
-# add_library(${NAME} ${SOURCES})
-add_executable(${NAME} ${SOURCES})
+add_library(${NAME} ${SOURCES})
+# add_executable(${NAME} ${SOURCES})
 
 target_link_libraries(${NAME} PRIVATE ${SQLITE_PATH}/libs/sqlite3.dll)
 target_include_directories(${NAME} PRIVATE ${SQLITE_PATH}/include)

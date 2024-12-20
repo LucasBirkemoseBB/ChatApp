@@ -7,13 +7,14 @@ package main
 
 */
 import "C"
-import (
-	"fmt"
-)
+
+type callval struct {
+	names  **C.char
+	values **C.char
+	count  C.int
+}
 
 func main() {
-	fmt.Println("Bruh...")
-
 	var connection C.struct_database_connection
 	C.connect_database(&connection, C.CString("databse.db"))
 

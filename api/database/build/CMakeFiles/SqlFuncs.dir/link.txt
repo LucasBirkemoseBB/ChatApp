@@ -1,3 +1,2 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\SqlFuncs.dir/objects.a
-C:\msys64\ucrt64\bin\ar.exe qc CMakeFiles\SqlFuncs.dir/objects.a @CMakeFiles\SqlFuncs.dir\objects1.rsp
-C:\msys64\ucrt64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\SqlFuncs.dir/objects.a -Wl,--no-whole-archive -o SqlFuncs.exe -Wl,--out-implib,libSqlFuncs.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\SqlFuncs.dir\linkLibs.rsp
+C:\msys64\ucrt64\bin\ar.exe qc libSqlFuncs.a CMakeFiles/SqlFuncs.dir/src/sqlsys.c.obj
+C:\msys64\ucrt64\bin\ranlib.exe libSqlFuncs.a

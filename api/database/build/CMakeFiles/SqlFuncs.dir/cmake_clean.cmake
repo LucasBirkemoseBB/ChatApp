@@ -1,10 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/SqlFuncs.dir/src/sqlsys.c.obj"
   "CMakeFiles/SqlFuncs.dir/src/sqlsys.c.obj.d"
-  "SqlFuncs.exe"
-  "SqlFuncs.exe.manifest"
-  "SqlFuncs.pdb"
-  "libSqlFuncs.dll.a"
+  "libSqlFuncs.a"
+  "libSqlFuncs.pdb"
 )
 
 # Per-language clean rules from dependency scanning.
