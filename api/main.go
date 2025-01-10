@@ -21,6 +21,7 @@ func main() {
 	var args **C.char
 
 	C.execute_sql_file(&connection, C.CString("base.sql"), args, 0)
+	C.execute_sql_file(&connection, C.CString("getfrom.sql"), args, 0)
 
 	C.close_database(&connection)
 }

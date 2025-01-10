@@ -3,7 +3,24 @@
 
 #include <string.h>
 
-#include "sqlsys.h"
+#include <sqlite3.h>
+struct callbackvalues {
+	char** names;
+	char** values;
+	int count;
+};
+
+struct database_connection {
+        sqlite3* database;
+        int database_handle;
+
+};
+
+union format_arguments {
+        char* string;
+        double decimal;
+        int integer;
+};
 
 void format_string(const char* filename, char** dst, char** args,
                    size_t arg_count);
