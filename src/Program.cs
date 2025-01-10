@@ -1,3 +1,5 @@
+using ChatApp.src;
+
 namespace ChatApp;
 
 static class Program
@@ -9,6 +11,6 @@ static class Program
     static void Main()
     {
         ApplicationConfiguration.Initialize();
-        Application.Run(new Main());
+        Application.Run(new Login());
     }    
 }
