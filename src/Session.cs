@@ -23,7 +23,7 @@ namespace ChatApp.src
             }
 
             string[] valueNames = { "Name", "DOC", "PFP" };
-            string[] valueData = { $"'{username}'", $"'{DateTime.Now.ToString("yyyy-MM-dd")}'", "'SomeImage.png'" };
+            string[] valueData = { $"'{username}'", $"'{DateTime.Now.ToString("yyyy-MM-dd : HH:mm")}'", "'SomeImage.png'" };
             Database.GetInstance().Insert("Users", valueNames, valueData);
 
             users = Database.GetInstance().GetUsers();

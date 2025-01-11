@@ -20,11 +20,12 @@ public partial class Main : Form
         InitializeComponent();
         Dictionary<int, ChatApp.src.Message> dbmessages = Database.GetInstance().GetMessages();
         Font roboto = new Font("Roboto", 10F);
+        int cnt = 1;
         foreach (ChatApp.src.Message msg in dbmessages.Values)
         {
             Label lmsg = new Label();
 
-            bool recieving = !msg.sender.name.Equals(Session.currentSession.user.name);
+            bool recieving = !msg.sender.name.Equals(Session.currentSession!.user.name);
 
             int index = msg.id;
 
@@ -32,30 +33,25 @@ public partial class Main : Form
             lmsg.BackColor = Color.FromArgb(66, 44, 127);
             lmsg.Font = roboto;
             lmsg.ForeColor = Color.White;
-            lmsg.Location = new Point(748, 243/* - (dbmessages.Count - 3 - index) * ((int)roboto.GetHeight() + 4)*/);
+            lmsg.Location = new Point(648, 300 - (dbmessages.Values.Count - cnt) * (((int)roboto.GetHeight() + 4) * 5));
             lmsg.MaximumSize = new Size(300, ((int)roboto.GetHeight() + 2) * 5);
             lmsg.MinimumSize = new Size(300, (int)roboto.GetHeight() + 2);
             lmsg.Name = "msgnr" + index;
             lmsg.Size = new Size(300, ((int)roboto.GetHeight() + 2) * 5);
             lmsg.TabIndex = 0;
-            lmsg.Text = msg.content + $"\n//Sent from: {msg.sender.name}";
+            lmsg.Text = msg.content + $"\n//Sent from: {msg.sender.name}\n{msg.date}";
 
 
             if (recieving)
             {
                 lmsg.BackColor = Color.FromArgb(33, 22, 33);
-                lmsg.Location = new Point(100, lmsg.Location.Y);
+                lmsg.Location = new Point(50, lmsg.Location.Y);
             }
 
-            int cnt = 1;
-            foreach (Label lbl in messages)
-            {
-                lbl.Location = new Point(lbl.Location.X, lbl.Location.Y - cnt * ((int)roboto.GetHeight() + 4) * 5);
-                cnt++;
-            }
+            messages.Add(lmsg);
+            panel1.Controls.Add(messages.Last());
 
-            messages.Append(lmsg);
-            panel1.Controls.Add(lmsg);
+            cnt++;
         }
     }
 
@@ -72,7 +68,7 @@ public partial class Main : Form
         var users = Database.GetInstance().GetUsers();
 
         string[] valueNames = { "SenderID", "ChannelID", "Content", "Date" };
-        string[] valueData = { $"{Session.currentSession!.user.id}", "1", $"'{messageBox1.Text}'", $"'{DateTime.Now.ToString("yyyy-MM-dd")}'" };
+        string[] valueData = { $"{Session.currentSession!.user.id}", "1", $"'{messageBox1.Text}'", $"'{DateTime.Now.ToString("yyyy-MM-dd : HH:mm")}'" };
 
         Database.GetInstance().Insert("Messages", valueNames, valueData);
         Dictionary<int, ChatApp.src.Message> dbmessages = Database.GetInstance().GetMessages();
@@ -81,20 +77,23 @@ public partial class Main : Form
         new_msg.BackColor = Color.FromArgb(66, 44, 127);
         new_msg.Font = roboto;
         new_msg.ForeColor = Color.White;
-        new_msg.Location = new Point(748, 243);
+        new_msg.Location = new Point(648, 300);
         new_msg.MaximumSize = new Size(300, ((int)roboto.GetHeight() + 2) * 5);
         new_msg.MinimumSize = new Size(300, (int)roboto.GetHeight() + 2);
         new_msg.Name = "msgnr" + dbmessages.ToArray().Length;
         new_msg.Size = new Size(300, ((int)roboto.GetHeight() + 2) * 5);
         new_msg.TabIndex = 0;
-        new_msg.Text = messageBox1.Text + $" sent from: {Session.currentSession!.user.name}";
+        new_msg.Text = messageBox1.Text + $"\n//sent from: {Session.currentSession!.user.name}\n{DateTime.Now.ToString("yyyy-MM-dd : HH:mm")}";
 
         foreach(Label lmsg in messages) {
+        
             lmsg.Location = new Point(lmsg.Location.X, lmsg.Location.Y - ((int)roboto.GetHeight() + 4) * 5);
         }
 
         messages.Add(new_msg);
         panel1.Controls.Add(new_msg);
+
+        messageBox1.Text = "";
     }
 
     private void groupBox1_Enter(object sender, EventArgs e)
