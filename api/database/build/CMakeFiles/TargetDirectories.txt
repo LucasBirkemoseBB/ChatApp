@@ -1,3 +1,0 @@
-C:/Users/lucas/Documents/AA IMPORTANT FOLDER/c#/ChatApp/api/database/build/CMakeFiles/SqlFuncs.dir
-C:/Users/lucas/Documents/AA IMPORTANT FOLDER/c#/ChatApp/api/database/build/CMakeFiles/edit_cache.dir
-C:/Users/lucas/Documents/AA IMPORTANT FOLDER/c#/ChatApp/api/database/build/CMakeFiles/rebuild_cache.dir

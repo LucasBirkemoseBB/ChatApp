@@ -28,11 +28,15 @@ namespace ChatApp.src
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text.Trim().Length < 3) return;
+
+            Session.currentSession = Session.Login(textBox1.Text);
+
             Main frm = new Main();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
@@ -59,6 +63,7 @@ namespace ChatApp.src
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            Database.GetInstance().Close();
             Application.Exit();
         }
     }

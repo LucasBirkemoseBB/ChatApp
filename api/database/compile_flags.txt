@@ -1,3 +1,0 @@
--IC:/sqlite/include
--LC:/sqlite/libs/sqlite3.dll
-
